@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class OnTouchDown : MonoBehaviour
+public class OnTouchDown2D : MonoBehaviour
 {
     void Update () 
     {
@@ -10,10 +10,12 @@ public class OnTouchDown : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            RaycastHit2D hit = Physics2D.Raycast(
+                Camera.main.ScreenToWorldPoint(Input.mousePosition), 
+                Vector2.zero
+            );
 
-            if(Physics.Raycast (ray, out hit))
+            if(hit.collider != null)
             {
                 hitObject(hit.transform.gameObject);
             }
@@ -21,15 +23,15 @@ public class OnTouchDown : MonoBehaviour
 
         #elif UNITY_IOS || UNITY_ANDROID
 
-        RaycastHit hit = new RaycastHit();
+        RaycastHit2D hit = new RaycastHit2D();
         for (int i = 0; i < Input.touchCount; ++i) 
         {
             if (Input.GetTouch(i).phase.Equals(TouchPhase.Began)) 
             {
                 // Construct a ray from the current touch coordinates
-                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                Ray2D ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
 
-                if (Physics.Raycast(ray, out hit)) 
+                if (Physics2D.Raycast(ray, out hit))
                 {
                     hitObject(hit.transform.gameObject);
                 }

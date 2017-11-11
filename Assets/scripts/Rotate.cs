@@ -47,6 +47,25 @@ public class Rotate : MonoBehaviour
                 transform.Rotate(Vector3.forward * Time.deltaTime * rotateSpeed);   
             }
         }
+    }
 
+    public void randomSpin()
+    {
+        StartCoroutine(TimedRandomSpin());
+    }
+
+    IEnumerator TimedRandomSpin()
+    {
+        rotateSpeed = 500;
+        rotateX = false;
+        rotateY = false;
+        rotateZ = true;
+
+        yield return new WaitForSeconds(2.0f);
+
+        rotateSpeed = 0;
+        rotateX = false;
+        rotateY = false;
+        rotateZ = false;
     }
 }
