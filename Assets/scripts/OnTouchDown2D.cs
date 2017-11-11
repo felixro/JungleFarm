@@ -15,7 +15,7 @@ public class OnTouchDown2D : MonoBehaviour
                 Vector2.zero
             );
 
-            if(hit.collider != null)
+            if(hit != null && hit.collider != null)
             {
                 hitObject(hit.transform.gameObject);
             }
@@ -23,15 +23,16 @@ public class OnTouchDown2D : MonoBehaviour
 
         #elif UNITY_IOS || UNITY_ANDROID
 
-        RaycastHit2D hit = new RaycastHit2D();
         for (int i = 0; i < Input.touchCount; ++i) 
         {
             if (Input.GetTouch(i).phase.Equals(TouchPhase.Began)) 
             {
-                // Construct a ray from the current touch coordinates
-                Ray2D ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
 
-                if (Physics2D.Raycast(ray, out hit))
+                // Construct a ray from the current touch coordinates
+                RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+                if (hit != null && hit.collider != null)
                 {
                     hitObject(hit.transform.gameObject);
                 }

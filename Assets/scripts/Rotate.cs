@@ -56,12 +56,16 @@ public class Rotate : MonoBehaviour
 
     IEnumerator TimedRandomSpin()
     {
+        clockWise = !clockWise;
+
         rotateSpeed = 500;
         rotateX = false;
         rotateY = false;
         rotateZ = true;
 
         yield return new WaitForSeconds(2.0f);
+
+        clockWise = !clockWise;
 
         rotateSpeed = 0;
         rotateX = false;
