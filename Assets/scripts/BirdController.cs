@@ -62,6 +62,11 @@ public class BirdController : MonoBehaviour
             flyAction.changeDirection();
         }
 
+        Vector3 curScale = instance.transform.localScale;
+
+        float size = Random.Range(0.5f, 1.0f);
+        instance.transform.localScale = curScale * size;
+
         flyAction.frequency = Random.Range(1f, 3f);
         flyAction.moveSpeed = Random.Range(1f, 4f);
         flyAction.magnitude = Random.Range(1f, 2.5f);

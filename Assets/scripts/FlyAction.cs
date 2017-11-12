@@ -23,17 +23,14 @@ public class FlyAction : MonoBehaviour
 
     void Update()
     {
-        if (border != null)
+        if (transform.position.x + borderOffset <= border.x)
         {
-            if (transform.position.x + borderOffset <= border.x)
-            {
-                changeDirection();
-            }
+            changeDirection();
+        }
 
-            if (transform.position.x + borderOffset >= border.width)
-            {
-                changeDirection();
-            }
+        if (transform.position.x + borderOffset >= border.width)
+        {
+            changeDirection();
         }
 
         pos += transform.right * Time.deltaTime * moveSpeed * (leftToRightDirection ? 1f : -1f);
@@ -44,10 +41,13 @@ public class FlyAction : MonoBehaviour
     {
         // flip sprite
         leftToRightDirection = !leftToRightDirection;
+
+        Vector3 curLocalScale = transform.localScale;
+
         transform.localScale = new Vector3(
-            leftToRightDirection ? 1f : -1f, 
-            1f, 
-            1f
+            leftToRightDirection ? Mathf.Abs(curLocalScale.x) : Mathf.Abs(curLocalScale.x) * -1, 
+            curLocalScale.y, 
+            curLocalScale.z
         );
     }
 
