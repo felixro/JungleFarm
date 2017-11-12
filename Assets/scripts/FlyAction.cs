@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class FlyAction : MonoBehaviour
 {
-    public float MoveSpeed = 2f;
-
+    public float moveSpeed = 2f;
     public float frequency = 3.0f; // Speed of sine movement
     public float magnitude = 1.0f; // Size of sine movement
+    public bool leftToRightDirection = true;
 
     private Vector3 axis;
     private Vector3 pos;
-
-    private float horizontalDirection = 1f;
 
     void Start () 
     {
@@ -22,14 +20,18 @@ public class FlyAction : MonoBehaviour
 
     void Update()
     {
-        pos += transform.right * Time.deltaTime * MoveSpeed * horizontalDirection;
+        pos += transform.right * Time.deltaTime * moveSpeed * (leftToRightDirection ? 1f : -1f);
         transform.position = pos + axis * Mathf.Sin (Time.time * frequency) * magnitude;
     }
 
     public void changeDirection()
     {
         // flip sprite
-        horizontalDirection = -horizontalDirection;
-        transform.localScale = new Vector3(horizontalDirection, 1f, 1f);
+        leftToRightDirection = !leftToRightDirection;
+        transform.localScale = new Vector3(
+            leftToRightDirection ? 1f : -1f, 
+            1f, 
+            1f
+        );
     }
 }
