@@ -65,8 +65,6 @@ public class Rotate : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
-        clockWise = !clockWise;
-
         rotateSpeed = 0;
         rotateX = false;
         rotateY = false;

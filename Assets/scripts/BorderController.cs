@@ -57,12 +57,11 @@ public class BorderController : MonoBehaviour
     {
         Vector3 position = new Vector3(
             transform.position.x,
-            transform.position.y - bounds.extents.y,
+            transform.position.y - bounds.extents.y + 0.75f,
             transform.position.z
         );
 
         GameObject border = Instantiate(borderPrefab, position, Quaternion.identity);
-
         border.GetComponent<Renderer>().material.color = color;
     }
 
