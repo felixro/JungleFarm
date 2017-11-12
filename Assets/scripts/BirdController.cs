@@ -18,13 +18,11 @@ public class BirdController : MonoBehaviour
         Debug.Log(spawnAreaTransform.position);
 
         spawnArea = new Rect(
-            transform.position.x - spawnAreaTransform.localScale.x/2,
-            transform.position.y + spawnAreaTransform.localScale.y/2,
+            spawnAreaTransform.position.x - spawnAreaTransform.localScale.x/2,
+            spawnAreaTransform.position.y - spawnAreaTransform.localScale.y/2,
             spawnAreaTransform.localScale.x,
             spawnAreaTransform.localScale.y
         );
-
-        Debug.Log(spawnArea);
 
         for (int i=0;i<numberOfPrefabs;i++)
         {
@@ -36,12 +34,12 @@ public class BirdController : MonoBehaviour
     {
         Vector3 position = new Vector3(
             Random.Range(
-                spawnAreaTransform.position.x - spawnArea.width/2, 
-                spawnAreaTransform.position.x + spawnArea.width/2
+                spawnArea.x, 
+                spawnArea.x + spawnArea.width
             ), 
             Random.Range(
-                spawnAreaTransform.position.y - spawnArea.height/2,
-                spawnAreaTransform.position.y + spawnArea.height/2
+                spawnArea.y,
+                spawnArea.y + spawnArea.height
             ), 
             0
         );
@@ -51,11 +49,11 @@ public class BirdController : MonoBehaviour
             position, 
             Quaternion.identity
         );
-
-        randomizeFlightParameters(instance);
+            
+        updateFlightParameters(instance);
     }
 
-    void randomizeFlightParameters(GameObject instance)
+    void updateFlightParameters(GameObject instance)
     {
         FlyAction flyAction = instance.GetComponent<FlyAction>();
 
@@ -67,5 +65,7 @@ public class BirdController : MonoBehaviour
         flyAction.frequency = Random.Range(1f, 3f);
         flyAction.moveSpeed = Random.Range(1f, 4f);
         flyAction.magnitude = Random.Range(1f, 2.5f);
+
+        flyAction.setBorder(spawnArea);
     }
 }

@@ -12,6 +12,9 @@ public class FlyAction : MonoBehaviour
     private Vector3 axis;
     private Vector3 pos;
 
+    private float borderOffset = 10f;
+    private Rect border;
+
     void Start () 
     {
         pos = transform.position;
@@ -20,6 +23,19 @@ public class FlyAction : MonoBehaviour
 
     void Update()
     {
+        if (border != null)
+        {
+            if (transform.position.x + borderOffset <= border.x)
+            {
+                changeDirection();
+            }
+
+            if (transform.position.x + borderOffset >= border.width)
+            {
+                changeDirection();
+            }
+        }
+
         pos += transform.right * Time.deltaTime * moveSpeed * (leftToRightDirection ? 1f : -1f);
         transform.position = pos + axis * Mathf.Sin (Time.time * frequency) * magnitude;
     }
@@ -33,5 +49,10 @@ public class FlyAction : MonoBehaviour
             1f, 
             1f
         );
+    }
+
+    public void setBorder(Rect rect)
+    {
+        border = rect;
     }
 }
