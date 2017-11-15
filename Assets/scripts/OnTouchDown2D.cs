@@ -17,7 +17,6 @@ public class OnTouchDown2D : MonoBehaviour
 
             if(hit != null && hit.collider != null)
             {
-                Debug.Log("hit this: " + hit.transform.name);
                 hitObject(hit.transform.gameObject);
             }
         }
@@ -45,7 +44,6 @@ public class OnTouchDown2D : MonoBehaviour
 
     void hitObject(GameObject gameobject)
     {
-        Debug.Log("Just hit gameobject " + gameobject.name);
         gameobject.SendMessage("hit");
     }
 }
