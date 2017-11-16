@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SunMove : MonoBehaviour 
+public class OrbitingBodyMove : MonoBehaviour 
 {
+    public int curPosition = 0;
+
     private LineRenderer lineRenderer;
     private Vector3[] positions;
 
-    private int curPosition;
     private int nextPosition;
     private int nrOfPositions;
     private float speed = 0.5f;
@@ -20,8 +21,7 @@ public class SunMove : MonoBehaviour
         lineRenderer.GetPositions(positions);
 
         // initially move sun to the first vector in positions
-        curPosition = 0;
-        nextPosition = 1;
+        nextPosition = curPosition + 1;
         nrOfPositions = positions.Length;
         transform.position = positions[curPosition];
 	}

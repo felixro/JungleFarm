@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SunHitAction : MonoBehaviour 
+public class OrbitingBodyAction : MonoBehaviour 
 {
     private AudioSource audioSource;
     private Animator animator;
@@ -15,18 +15,17 @@ public class SunHitAction : MonoBehaviour
 
     public void hit()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-
         if (animator.enabled)
         {
             animator.enabled = false;
         }
         else
         {
-            animator.enabled = true;    
+            animator.enabled = true;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
     }
 }
