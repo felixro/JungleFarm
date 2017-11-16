@@ -11,7 +11,7 @@ public class OrbitingBodyMove : MonoBehaviour
 
     private int nextPosition;
     private int nrOfPositions;
-    private float speed = 0.5f;
+    private float speed = 0.8f;
 
 	void Start () 
     {
