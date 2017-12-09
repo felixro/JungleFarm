@@ -15,8 +15,6 @@ public class BirdController : MonoBehaviour
     {
         spawnAreaTransform = gameObject.transform.GetChild(0);
 
-        Debug.Log(spawnAreaTransform.position);
-
         spawnArea = new Rect(
             spawnAreaTransform.position.x - spawnAreaTransform.localScale.x/2,
             spawnAreaTransform.position.y - spawnAreaTransform.localScale.y/2,

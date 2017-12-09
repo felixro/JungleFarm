@@ -41,11 +41,6 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
-	void Update () 
-    {
-        Debug.Log(sunSpriteRenderer.isVisible);
-	}
-
     IEnumerator ChangeFromToColor(Color fromColor, Color toColor)
     {
         changingColor = true;

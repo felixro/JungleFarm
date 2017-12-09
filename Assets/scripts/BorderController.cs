@@ -57,7 +57,7 @@ public class BorderController : MonoBehaviour
     {
         Vector3 position = new Vector3(
             transform.position.x,
-            transform.position.y - bounds.extents.y + 0.75f,
+            transform.position.y - bounds.extents.y + 1.5f,
             transform.position.z
         );
 

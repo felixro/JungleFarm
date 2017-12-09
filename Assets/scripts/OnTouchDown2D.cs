@@ -23,6 +23,12 @@ public class OnTouchDown2D : MonoBehaviour
 
         #elif UNITY_IOS || UNITY_ANDROID
 
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Application.Quit();
+            return;
+        }
+
         for (int i = 0; i < Input.touchCount; ++i) 
         {
             if (Input.GetTouch(i).phase.Equals(TouchPhase.Began)) 
