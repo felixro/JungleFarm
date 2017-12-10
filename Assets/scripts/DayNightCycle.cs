@@ -9,6 +9,8 @@ public class DayNightCycle : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private StarController starController;
+
     private Color dayColor = Color.white;
     private Color nightColor = Color.black;
     private Color lerpedColor;
@@ -22,6 +24,7 @@ public class DayNightCycle : MonoBehaviour
 	void Start () 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        starController = GetComponentInChildren<StarController>();
 	}
 	
     void FixedUpdate()
@@ -31,11 +34,13 @@ public class DayNightCycle : MonoBehaviour
             if (isDay && moonSpriteRenderer.isVisible)
             {
                 isDay = false;
+                starController.changeToNight();
                 StartCoroutine(ChangeFromToColor(dayColor, nightColor));
             }
             else if (!isDay && sunSpriteRenderer.isVisible)
             {
                 isDay = true;
+                starController.changeToDay();
                 StartCoroutine(ChangeFromToColor(nightColor, dayColor));
             }
         }
