@@ -5,6 +5,8 @@ using UnityEngine;
 public class StarController : MonoBehaviour 
 {
     public List<GameObject> starTypes;
+    public float minScale = 0.5f;
+    public float maxScale = 1.5f;
 
     public int numberOfPrefabs = 5;
 
@@ -113,7 +115,7 @@ public class StarController : MonoBehaviour
 
         star.transform.localPosition = position;
 
-        float scale = Random.Range(0.5f, 2.5f);
+        float scale = Random.Range(minScale, maxScale);
         star.transform.localScale = new Vector3(scale, scale, 1.0f);
         star.GetComponent<Renderer>().enabled = false;
     }
