@@ -13,7 +13,7 @@ public class OrbitingBodyAction : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         if (animator.enabled)
         {

@@ -48,8 +48,8 @@ public class OnTouchDown2D : MonoBehaviour
         #endif
     }
 
-    void hitObject(GameObject gameobject)
+    void hitObject(GameObject gameobject, bool isDrag = false)
     {
-        gameobject.SendMessage("hit");
+        gameobject.SendMessage("hit", isDrag);
     }
 }

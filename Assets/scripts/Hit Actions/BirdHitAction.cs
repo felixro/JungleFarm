@@ -11,7 +11,7 @@ public class BirdHitAction : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         transform.gameObject.SendMessage("changeDirection");
 

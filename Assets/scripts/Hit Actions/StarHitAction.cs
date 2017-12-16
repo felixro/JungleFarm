@@ -16,7 +16,7 @@ public class StarHitAction : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         if (rb == null)
         {

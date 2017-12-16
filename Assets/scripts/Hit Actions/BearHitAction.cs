@@ -56,7 +56,7 @@ public class BearHitAction : MonoBehaviour
         );
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         bool isRunning = !animator.GetBool("Running");
         animator.SetBool("Running", isRunning);

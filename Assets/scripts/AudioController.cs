@@ -16,7 +16,7 @@ public class AudioController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClips[Random.Range(0,audioClips.Count)];
         audioSource.loop = true;
-        audioSource.volume = 0.2f;
+        audioSource.volume = 0.5f;
 
         if (playOnStart)
         {

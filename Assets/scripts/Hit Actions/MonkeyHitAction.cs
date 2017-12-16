@@ -21,7 +21,7 @@ public class MonkeyHitAction : MonoBehaviour
         rb.AddRelativeForce(Vector2.up * thrust);
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         transform.gameObject.SendMessage("randomSpin");
 

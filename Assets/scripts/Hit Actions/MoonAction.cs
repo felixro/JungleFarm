@@ -11,7 +11,7 @@ public class MoonAction : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void hit()
+    public void hit(bool isDrag = false)
     {
         transform.gameObject.SendMessage("randomSpin");
 
