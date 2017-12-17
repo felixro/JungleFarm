@@ -5,6 +5,7 @@ using UnityEngine;
 public class StarSparkle : MonoBehaviour 
 {
     private SpriteRenderer spriteRenderer;
+    private CircleCollider2D collider;
 
     private float creationTime = float.MaxValue;
     private float randomDelay;
@@ -17,6 +18,7 @@ public class StarSparkle : MonoBehaviour
 	void Start () 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CircleCollider2D>();
         randomDelay = Random.Range(0.0f, 5.0f);
 	}
 	
@@ -47,6 +49,10 @@ public class StarSparkle : MonoBehaviour
         {
             spriteRenderer.color = new Color(color.r, color.g, color.b, color.a + (fadeInSpeed * Time.deltaTime));
         }
+        else
+        {
+            collider.enabled = true;
+        }
     }
 
     public void FadeOut()
@@ -56,6 +62,10 @@ public class StarSparkle : MonoBehaviour
         if (color.a >= 0.0f)
         {
             spriteRenderer.color = new Color(color.r, color.g, color.b, color.a - (fadeOutSpeed * Time.deltaTime));
+        }
+        else
+        {
+            collider.enabled = false;
         }
     }
 }

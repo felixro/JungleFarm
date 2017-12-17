@@ -58,6 +58,9 @@ public class StarController : MonoBehaviour
             StarSparkle starSparkle = star.GetComponent<StarSparkle>();
             starSparkle.FadeOut();
 
+            //CircleCollider2D collider = star.GetComponent<CircleCollider2D>();
+            //collider.enabled = false;
+
             Invoke("ResetStars", 5f);
         }
     }
