@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class OnTouchDown2D : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class OnTouchDown2D : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            Application.Quit();
+            SceneManager.LoadScene("menu-main", LoadSceneMode.Single);
             return;
         }
 

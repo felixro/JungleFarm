@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 516ace4d3b62d410ca1c14db71f82f7c
+timeCreated: 1520705195
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hand Drawn Shapes
+  fontNames:
+  - Hand Drawn Shapes
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 409d6396679d740deab0e4487ab07c24, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
