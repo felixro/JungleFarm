@@ -4,41 +4,33 @@ using UnityEngine;
 
 public class MonkeyHitAction : MonoBehaviour 
 {
-    public float defaultThrust = 20f;
-
-    private Rigidbody2D rb;
-    private float thrust = 0f;
     private AudioSource audioSource;
+    private Rigidbody2D rigidbody;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-    }
-
-    void FixedUpdate()
-    {
-        rb.AddRelativeForce(Vector2.up * thrust);
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void hit(bool isDrag = false)
     {
-        transform.gameObject.SendMessage("randomSpin");
-
         if (!audioSource.isPlaying)
         {
             audioSource.Play();
+            StartCoroutine(AddTemporaryForce());
         }
-
-        StartCoroutine(AddTemporaryForce());
     }
 
     IEnumerator AddTemporaryForce()
     {
-        thrust = defaultThrust;
+        Vector2 vector =  new Vector2(
+            Random.Range(-400,400),
+            Random.Range(200,600)
+        );
+
+        rigidbody.AddForce(vector);
 
         yield return new WaitForSeconds(1.0f);
-
-        thrust = 0f;
     }
 }

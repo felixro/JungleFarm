@@ -11,8 +11,20 @@ public class MonkeyController : MonoBehaviour
     public float borderOffset = 0.5f;
     public int numberOfPrefabs = 10;
 
+    private Transform spawnAreaTransform;
+    private Rect spawnArea;
+
 	void Start() 
     {
+        spawnAreaTransform = gameObject.transform.GetChild(0);
+
+        spawnArea = new Rect(
+            spawnAreaTransform.position.x - spawnAreaTransform.localScale.x/2,
+            spawnAreaTransform.position.y - spawnAreaTransform.localScale.y/2,
+            spawnAreaTransform.localScale.x,
+            spawnAreaTransform.localScale.y
+        );
+
         for (int i=0;i<numberOfPrefabs;i++)
         {
             Instantiate();
@@ -23,12 +35,12 @@ public class MonkeyController : MonoBehaviour
     {
         Vector3 position = new Vector3(
             Random.Range(
-                transform.position.x - border.bounds.extents.x + borderOffset, 
-                transform.position.x + border.bounds.extents.x - borderOffset
+                spawnArea.x, 
+                spawnArea.x + spawnArea.width
             ), 
             Random.Range(
-                transform.position.y - border.bounds.extents.y + borderOffset, 
-                transform.position.y + border.bounds.extents.y - borderOffset
+                spawnArea.y,
+                spawnArea.y + spawnArea.height
             ), 
             0
         );
